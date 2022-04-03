@@ -28,12 +28,11 @@
     }
     </style>
 
-    
     <h1 style = "font-family: Italic">{% block title %} Welcome to Short Way {% endblock %}</h1>
     <h2 style = "font-family: Cursive ;font-size:130%"> Smart way to shorten URL </h2>
     <form method="post">
     <div class="form-group">
-        <label for="url">URL</label>
+        <label for="url"> </label>
         <input type="text" name="url"
                placeholder="URL to shorten" class="form-control"
                value="{{ request.form['url'] }}" autofocus required></input>
