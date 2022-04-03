@@ -22,6 +22,8 @@ def index():
         url = request.form['url']
 
         if not url:
+            pass
+        elif not url.startswith(("http","www")):
             flash('The URL is required!')
             return redirect(url_for('index'))
 
