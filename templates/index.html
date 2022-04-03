@@ -1,22 +1,67 @@
+
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} Welcome to Url Shortener {% endblock %}</h1>
+<style>
+    .button {
+      display: inline-block;
+      padding: 5px 12px;
+      font-size: 13px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      outline: none;
+      color: #fff;
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 2px #999;
+      margin-left: 20px;
+    }
+    
+    .button:hover {background-color: #3e8e41}
+    
+    .button:active {
+      background-color: #3e8e41;
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    }
+    </style>
+
+    
+    <h1 style = "font-family: Italic">{% block title %} Welcome to Short Way {% endblock %}</h1>
+    <h2 style = "font-family: Cursive ;font-size:130%"> Smart way to shorten URL </h2>
     <form method="post">
     <div class="form-group">
         <label for="url">URL</label>
         <input type="text" name="url"
                placeholder="URL to shorten" class="form-control"
-               value="{{ request.form['url'] }}" autofocus></input>
+               value="{{ request.form['url'] }}" autofocus required></input>
     </div>
 
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
-    </form>
 
-    {% if short_url %}
-    <hr>
-    <span>{{ short_url }}</span>
-    {% endif %}
+    <input type="text" id ="myInput" value= {{ short_url }}>
+    <button class="button" onclick="myFunction()">Copy text</button>
+    
+    <script>
+    function myFunction() {
+  /* Get the text field */
+    var copyText = document.getElementById("myInput");
+
+  /* Select the text field */
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+  /* Copy the text inside the text field */
+    navigator.clipboard.writeText(copyText.value);
+  
+  /* Alert the copied text */
+    alert("Copied the text: " + copyText.value);
+   }
+   </script>
+   
+    </form>
 {% endblock %}
