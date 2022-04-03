@@ -67,7 +67,7 @@ def url_redirect(id):
 @app.route('/display')
 def display():
     conn = get_db_connection()
-    db_urls = conn.execute('SELECT id, created, original_url, clicks FROM urls'
+    db_urls = conn.execute('SELECT id, created, original_url, clicks FROM urls order by 1 DESC'
                            ).fetchall()
     conn.close()
 
